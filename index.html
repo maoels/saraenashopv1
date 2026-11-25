@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SARAENA SHOP — Katalog Produk Pilihan &amp; Estetik</title>
+  <meta name="description" content="Selamat datang di SARAENA SHOP. Temukan koleksi produk pilihan terbaik dan pesan langsung melalui WhatsApp, Shopee, atau TikTok Shop." />
+  <link rel="icon" type="image/png" href="SARAENA.png" />
+
+  <!-- Import Google Fonts: Playfair Display (Heading) & Plus Jakarta Sans (UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN & FontAwesome Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <script>
+    // Konfigurasi Kustom Tailwind CSS untuk Token Warna & Tipografi SARAENA SHOP
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            saraena: {
+              magenta: '#E40082',
+              magentaDark: '#C2006E',
+              magentaSoft: '#FCE6F2',
+              cyan: '#00A2E9',
+              cyanDark: '#008AC7',
+              cyanSoft: '#E5F6FD',
+              cream: '#FDFBF7',
+              sand: '#F4EFEA',
+              border: '#EAE4DC',
+              ink: '#231F20'
+            }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #FDFBF7;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Tekstur titik halus seperti pada referensi desain */
+    .bg-artisan-dots {
+      background-color: #FDFBF7;
+      background-image: radial-gradient(#E5DDD3 0.85px, transparent 0.85px);
+      background-size: 22px 22px;
+    }
+
+    /* Animasi denyut halus untuk tombol WhatsApp melayang */
+    @keyframes waPulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
+      70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+    .wa-floating-pulse {
+      animation: waPulse 2.4s infinite;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FDFBF7;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D8CFC4;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #E40082;
+    }
+  </style>
+</head>
+<body class="bg-artisan-dots text-saraena-ink font-sans antialiased">
+
+  <!-- ==========================================================================
+       ROOT APLIKASI SARAENA SHOP (GITHUB PAGES EDITION)
+       ========================================================================== -->
+  <div id="saraena-app-root" class="min-h-screen w-full flex flex-col justify-between selection:bg-saraena-magenta selection:text-white">
+
+    <!-- ==================== 1. TOP STICKY NAVBAR ==================== -->
+    <header class="sticky top-0 z-40 bg-saraena-cream/95 backdrop-blur-md border-b border-saraena-border transition-all">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+        
+        <!-- Brand Logo (Otomatis membaca SARAENA.png di repo GitHub, atau fallback ke Vektor SVG) -->
+        <a href="#beranda" onclick="switchView('store')" class="flex items-center gap-3 group focus:outline-none">
+          <div id="nav-logo-container" class="flex items-center gap-2.5">
+            <img src="SARAENA.png" alt="SARAENA SHOP" onerror="this.style.display='none'; document.getElementById('default-svg-logo').classList.remove('hidden');" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+            <div id="default-svg-logo" class="hidden flex items-center gap-2.5">
+              <svg class="w-11 h-11 shrink-0 transition-transform duration-300 group-hover:scale-105" viewBox="0 0 120 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M52 10C26 12 10 34 10 58C10 79 20 96 44 100L30 89L43 81L38 69C46 75 56 79 67 79C75 79 79 74 78 69C77 64 68 62 59 61L64 56C65 54 62 52 57 53C49 55 40 53 34 46C28 38 30 22 52 10Z" fill="#00A2E9"/>
+                <path d="M68 100C94 98 110 76 110 52C110 31 100 14 76 10L90 21L77 29L82 41C74 35 64 31 53 31C45 31 41 36 42 41C43 46 52 48 61 49L56 54C55 56 58 58 63 57C71 55 80 57 86 64C92 72 90 88 68 100Z" fill="#E40082"/>
+              </svg>
+              <div class="flex flex-col leading-none">
+                <span id="nav-brand-title" class="font-sans font-extrabold text-lg sm:text-xl tracking-tight text-saraena-ink">SARAENA SHOP</span>
+                <span id="nav-brand-sub" class="text-[11px] font-bold tracking-widest text-saraena-ink/80 mt-0.5">사라 에나</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Menu Navigasi Desktop -->
+        <nav id="desktop-nav-links" class="hidden md:flex items-center gap-8 text-sm font-semibold text-saraena-ink/80">
+          <a href="#beranda" class="hover:text-saraena-magenta transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-saraena-magenta after:transition-all">Beranda</a>
+          <a href="#kategori" class="hover:text-saraena-magenta transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-saraena-magenta after:transition-all">Kategori</a>
+          <a href="#semua-produk" class="hover:text-saraena-magenta transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-saraena-magenta after:transition-all">Semua Produk</a>
+          <a href="#keunggulan" class="hover:text-saraena-magenta transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-saraena-magenta after:transition-all">Keunggulan</a>
+          <a href="#promo" class="hover:text-saraena-magenta transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-saraena-magenta after:transition-all">Promo</a>
+        </nav>
+
+        <!-- Aksi Kanan: Search Quick Jump, Badge Preview, & Tombol Admin -->
+        <div class="flex items-center gap-2.5 sm:gap-3">
+          <span id="preview-mode-badge" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-saraena-cyanSoft text-saraena-cyanDark border border-saraena-cyan/30">
+            <span class="w-1.5 h-1.5 rounded-full bg-saraena-cyan animate-ping"></span>
+            Mode Preview
+          </span>
+
+          <a href="#semua-produk" onclick="focusSearchInput()" title="Cari Produk" class="w-10 h-10 rounded-full bg-white border border-saraena-border flex items-center justify-center text-saraena-ink hover:border-saraena-cyan hover:text-saraena-cyan transition-all shadow-xs">
+            <i class="fa-solid fa-magnifying-glass text-sm"></i>
+          </a>
+
+          <button id="btn-admin-nav" onclick="handleAdminNavClick()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-white border border-saraena-border text-saraena-ink hover:border-saraena-magenta hover:text-saraena-magenta transition-all shadow-xs cursor-pointer">
+            <i class="fa-solid fa-user-shield text-saraena-magenta"></i>
+            <span id="btn-admin-nav-text">Admin</span>
+          </button>
+
+          <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-full bg-white border border-saraena-border flex items-center justify-center text-saraena-ink cursor-pointer" aria-label="Menu">
+            <i id="mobile-menu-icon" class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Dropdown Menu Mobile -->
+      <div id="mobile-menu-drawer" class="hidden md:hidden bg-white border-b border-saraena-border px-6 py-4 space-y-3 shadow-lg">
+        <a href="#beranda" onclick="toggleMobileMenu()" class="block py-1.5 font-semibold text-saraena-ink hover:text-saraena-magenta">Beranda</a>
+        <a href="#kategori" onclick="toggleMobileMenu()" class="block py-1.5 font-semibold text-saraena-ink hover:text-saraena-magenta">Kategori Produk</a>
+        <a href="#semua-produk" onclick="toggleMobileMenu()" class="block py-1.5 font-semibold text-saraena-ink hover:text-saraena-magenta">Semua Produk</a>
+        <a href="#keunggulan" onclick="toggleMobileMenu()" class="block py-1.5 font-semibold text-saraena-ink hover:text-saraena-magenta">Keunggulan Kami</a>
+        <a href="#promo" onclick="toggleMobileMenu()" class="block py-1.5 font-semibold text-saraena-ink hover:text-saraena-magenta">Promo Spesial</a>
+      </div>
+    </header>
+
+    <!-- ========================================================================
+         TAMPILAN 1: LANDING PAGE PUBLIK (STOREFRONT)
+         ======================================================================== -->
+    <main id="storefront-view" class="flex-1">
+
+      <!-- ==================== HERO SECTION & CALL TO ACTION ==================== -->
+      <section id="beranda" class="relative overflow-hidden pt-8 pb-16 lg:pt-12 lg:pb-24">
+        <svg class="hidden sm:block absolute -left-16 bottom-6 w-44 h-44 text-saraena-cyan/15 pointer-events-none" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path fill="currentColor" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C87,14.6,81.4,29.2,72.9,41.8C64.4,54.4,53,65,39.7,72.3C26.4,79.6,13.2,83.6,-0.6,84.6C-14.4,85.7,-28.8,83.8,-41.7,76.9C-54.6,70,-66,58.1,-74.3,44.4C-82.6,30.7,-87.8,15.3,-87.5,0.2C-87.2,-15,-81.4,-30,-72.2,-42.6C-63,-55.2,-50.4,-65.4,-36.6,-72.8C-22.8,-80.2,-11.4,-84.8,2.1,-88.4C15.6,-92,30.6,-83.6,44.7,-76.4Z" transform="translate(100 100)" />
+        </svg>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+            
+            <!-- Kolom Kiri: Copywriting & Dual CTA -->
+            <div class="lg:col-span-6 space-y-6 text-center lg:text-left z-10">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-saraena-cyanSoft border border-saraena-cyan/25">
+                <span class="w-2 h-2 rounded-full bg-saraena-magenta"></span>
+                <span id="hero-eyebrow" class="text-xs font-extrabold uppercase tracking-widest text-saraena-cyanDark">KOLEKSI TERKURASI DENGAN CINTA</span>
+              </div>
+
+              <h1 id="hero-judul" class="font-serif font-bold text-4xl sm:text-5xl lg:text-[54px] text-saraena-ink leading-[1.15] tracking-tight">
+                Produk Pilihan &amp; Estetik untuk Gaya Hidup Anda
+              </h1>
+
+              <p id="hero-subjudul" class="text-base sm:text-lg text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                Temukan beragam produk berkualitas tinggi di <strong class="text-saraena-ink">SARAENA SHOP</strong>. Pesan mudah dan cepat langsung melalui WhatsApp, Shopee, atau TikTok Shop favorit Anda.
+              </p>
+
+              <!-- Call To Action Buttons -->
+              <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                <a href="#semua-produk" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-bold text-sm sm:text-base text-white bg-saraena-magenta hover:bg-saraena-magentaDark shadow-lg shadow-saraena-magenta/25 hover:-translate-y-0.5 transition-all">
+                  <span id="hero-cta-text">Belanja Sekarang</span>
+                  <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <button onclick="openMainWhatsApp()" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-bold text-sm sm:text-base text-saraena-cyanDark bg-white border-2 border-saraena-cyan hover:bg-saraena-cyanSoft hover:-translate-y-0.5 transition-all cursor-pointer">
+                  <i class="fa-brands fa-whatsapp text-lg text-[#25D366]"></i>
+                  <span>Tanya Admin</span>
+                </button>
+              </div>
+
+              <!-- Indikator Kepercayaan Singkat -->
+              <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs font-semibold text-gray-500">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-saraena-magentaSoft text-saraena-magenta flex items-center justify-center"><i class="fa-solid fa-check"></i></span>
+                  <span>100% Produk Original</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-saraena-cyanSoft text-saraena-cyan flex items-center justify-center"><i class="fa-solid fa-bolt"></i></span>
+                  <span>Checkout Multi-Platform</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-green-100 text-[#25D366] flex items-center justify-center"><i class="fa-brands fa-whatsapp"></i></span>
+                  <span>Fast Respon Admin</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Kolom Kanan: Hero Banner Asimetris & Organic Blobs -->
+            <div class="lg:col-span-6 relative">
+              <svg class="absolute -top-6 -left-6 sm:-left-10 w-36 h-36 sm:w-48 sm:h-48 text-saraena-cyan z-0" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" d="M47.1,-78.2C60.9,-71.4,71.8,-58.3,79.5,-43.7C87.2,-29.1,91.7,-13,90.3,2.5C88.9,18,81.6,32.9,71.7,45.5C61.8,58.1,49.3,68.4,35.2,74.9C21.1,81.4,5.4,84.1,-9.7,82.4C-24.8,80.7,-39.3,74.6,-52.1,65.6C-64.9,56.6,-76,44.7,-82.2,30.6C-88.4,16.5,-89.7,0.2,-86.3,-14.9C-82.9,-30,-74.8,-43.9,-63.3,-52.1C-51.8,-60.3,-36.9,-62.8,-23.4,-69.8C-9.9,-76.8,2.2,-88.3,16.1,-89.1C30,-89.9,33.3,-85,47.1,-78.2Z" transform="translate(100 100)" />
+              </svg>
+
+              <svg class="absolute -bottom-6 -right-4 sm:-right-8 w-36 h-36 sm:w-44 sm:h-44 text-saraena-magenta z-20 pointer-events-none" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" d="M39.9,-65.7C52.1,-58.4,62.6,-48.2,70.3,-35.8C78,-23.4,82.9,-8.8,81.6,5.3C80.3,19.4,72.8,33,62.8,44.2C52.8,55.4,40.3,64.2,26.5,70.1C12.7,76,-2.4,79,-16.7,76.3C-31,73.6,-44.5,65.2,-55.6,54.1C-66.7,43,-75.4,29.2,-78.9,14.1C-82.4,-1,-80.7,-17.4,-73.4,-31.1C-66.1,-44.8,-53.2,-55.8,-39.3,-62.4C-25.4,-69,-10.5,-71.2,2.4,-75.1C15.3,-79,27.7,-73,39.9,-65.7Z" transform="translate(100 100)" />
+              </svg>
+
+              <div class="relative z-10 rounded-3xl rounded-bl-[90px] sm:rounded-bl-[135px] overflow-hidden shadow-2xl border-4 border-white bg-saraena-sand aspect-[4/3]">
+                <img id="hero-gambar" src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=1000&q=85" alt="SARAENA SHOP Featured Banner" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+                
+                <div class="absolute bottom-5 left-12 sm:left-20 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-lg border border-saraena-border flex items-center gap-3">
+                  <div class="flex -space-x-1.5">
+                    <span class="w-7 h-7 rounded-full bg-[#25D366] text-white flex items-center justify-center text-xs ring-2 ring-white"><i class="fa-brands fa-whatsapp"></i></span>
+                    <span class="w-7 h-7 rounded-full bg-[#EE4D2D] text-white flex items-center justify-center text-xs ring-2 ring-white"><i class="fa-solid fa-bag-shopping"></i></span>
+                    <span class="w-7 h-7 rounded-full bg-[#111111] text-white flex items-center justify-center text-xs ring-2 ring-white"><i class="fa-brands fa-tiktok"></i></span>
+                  </div>
+                  <div class="text-left">
+                    <p class="text-[11px] font-bold text-saraena-ink leading-tight">Tersedia di 3 Channel</p>
+                    <p class="text-[10px] text-gray-500">WA, Shopee &amp; TikTok Shop</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SHOP BY CATEGORY (FILTER KATEGORI) ==================== -->
+      <section id="kategori" class="py-10 sm:py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+            <h2 class="font-serif font-bold text-2xl sm:text-3xl text-saraena-ink flex items-center gap-2.5">
+              <span class="inline-block px-4 py-1.5 bg-saraena-magenta text-white rounded-[24px_12px_28px_14px] shadow-sm">Belanja</span>
+              <span>per Kategori</span>
+            </h2>
+            <button onclick="filterByCategory('Semua')" class="inline-flex items-center gap-1.5 text-sm font-bold text-saraena-cyanDark hover:text-saraena-magenta transition-colors self-start sm:self-auto cursor-pointer">
+              <span>Tampilkan Semua Kategori</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+          </div>
+
+          <div id="category-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6"></div>
+        </div>
+      </section>
+
+      <!-- ==================== KATALOG SEMUA PRODUK ==================== -->
+      <section id="semua-produk" class="py-12 sm:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
+            <div>
+              <h2 class="font-serif font-bold text-2xl sm:text-3xl text-saraena-ink flex items-center gap-2.5">
+                <span class="inline-block px-4 py-1.5 bg-saraena-cyan text-white rounded-[14px_26px_12px_24px] shadow-sm">Semua</span>
+                <span>Produk Pilihan</span>
+              </h2>
+              <p class="text-sm text-gray-500 mt-2">Pilih produk favorit Anda dan klik tombol platform pembelian di bawah setiap produk.</p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
+              <div class="relative flex-1 sm:w-72">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                <input type="text" id="product-search-input" oninput="renderProducts()" placeholder="Cari nama produk..." class="w-full pl-10 pr-4 py-2.5 rounded-full bg-white border border-saraena-border text-sm text-saraena-ink focus:outline-none focus:border-saraena-magenta focus:ring-2 focus:ring-saraena-magenta/15 transition-all" />
+              </div>
+
+              <select id="product-sort-select" onchange="renderProducts()" class="px-4 py-2.5 rounded-full bg-white border border-saraena-border text-sm font-semibold text-saraena-ink focus:outline-none focus:border-saraena-cyan cursor-pointer">
+                <option value="default">Urutkan: Terbaru</option>
+                <option value="price-asc">Harga: Terendah</option>
+                <option value="price-desc">Harga: Tertinggi</option>
+                <option value="name-asc">Nama: A - Z</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="category-filter-pills" class="flex items-center gap-2 overflow-x-auto pb-3 mb-6"></div>
+
+          <div class="flex items-center justify-between text-xs font-semibold text-gray-500 mb-5">
+            <span id="product-count-label">Menampilkan 0 produk</span>
+            <span id="active-category-badge" class="text-saraena-magenta font-bold">Kategori: Semua</span>
+          </div>
+
+          <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"></div>
+
+          <div id="empty-products-state" class="hidden text-center py-16 px-4 bg-white rounded-3xl border border-saraena-border">
+            <div class="w-16 h-16 rounded-full bg-saraena-magentaSoft text-saraena-magenta flex items-center justify-center mx-auto mb-4 text-2xl">
+              <i class="fa-solid fa-box-open"></i>
+            </div>
+            <h3 class="font-serif font-bold text-xl text-saraena-ink mb-1">Produk Tidak Ditemukan</h3>
+            <p class="text-sm text-gray-500 max-w-md mx-auto mb-5">Maaf, tidak ada produk yang cocok dengan kata kunci atau kategori yang Anda pilih.</p>
+            <button onclick="resetFilters()" class="px-6 py-2.5 rounded-full text-sm font-bold text-white bg-saraena-magenta hover:bg-saraena-magentaDark transition-all cursor-pointer">
+              Reset Pencarian
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== WHY CHOOSE SARAENA SHOP ==================== -->
+      <section id="keunggulan" class="py-12 sm:py-16 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="bg-saraena-sand/80 rounded-[36px] border border-saraena-border overflow-hidden shadow-sm">
+            <div class="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+              <div class="lg:col-span-5 bg-saraena-magenta text-white p-8 sm:p-10 lg:p-12 lg:rounded-r-[80px] flex flex-col justify-center relative overflow-hidden">
+                <div class="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-white/10 pointer-events-none"></div>
+                <div class="absolute -bottom-10 -left-10 w-28 h-28 rounded-full bg-saraena-cyan/30 pointer-events-none"></div>
+
+                <span class="text-xs font-extrabold uppercase tracking-widest text-saraena-cyanSoft mb-2">KENAPA MEMILIH KAMI?</span>
+                <h2 class="font-serif font-bold text-3xl sm:text-4xl leading-tight mb-4">
+                  Kenapa Belanja di SARAENA SHOP?
+                </h2>
+                <p class="text-white/90 text-sm sm:text-base leading-relaxed mb-7">
+                  Kami menghadirkan produk-produk pilihan terbaik dengan kualitas terjamin, harga bersahabat, serta kemudahan transaksi di berbagai platform belanja kesayangan Anda.
+                </p>
+                <div>
+                  <button onclick="openMainWhatsApp()" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-saraena-magenta font-bold text-sm hover:bg-saraena-cyanSoft hover:text-saraena-ink transition-all shadow-md cursor-pointer">
+                    <span>Hubungi Admin Sekarang</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="lg:col-span-7 p-8 sm:p-10 lg:p-12 grid grid-cols-1 sm:grid-cols-2 gap-7 items-center">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-2xl bg-saraena-magentaSoft text-saraena-magenta flex items-center justify-center shrink-0 text-xl">
+                    <i class="fa-solid fa-award"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-base text-saraena-ink mb-1">Kualitas Terkurasi</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">Setiap produk melewati pengecekan teliti sebelum dikirim ke tangan Anda.</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-2xl bg-saraena-cyanSoft text-saraena-cyanDark flex items-center justify-center shrink-0 text-xl">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-base text-saraena-ink mb-1">Bebas Pilih Platform</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">Bisa order langsung via WhatsApp, Shopee, maupun TikTok Shop.</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-2xl bg-saraena-cyanSoft text-saraena-cyanDark flex items-center justify-center shrink-0 text-xl">
+                    <i class="fa-solid fa-truck-fast"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-base text-saraena-ink mb-1">Pengemasan Aman</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">Packing rapi dan aman untuk memastikan paket tiba dalam kondisi sempurna.</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-2xl bg-saraena-magentaSoft text-saraena-magenta flex items-center justify-center shrink-0 text-xl">
+                    <i class="fa-solid fa-headset"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-base text-saraena-ink mb-1">Layanan Ramah</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">Tim admin siap membantu konsultasi produk dan cek stok secara cepat.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== BANNER CALL TO ACTION (PROMO SPESIAL) ==================== -->
+      <section id="promo" class="py-10 sm:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="relative rounded-[32px] bg-gradient-to-r from-saraena-cyanSoft via-white to-saraena-magentaSoft border border-saraena-cyan/25 overflow-hidden shadow-lg">
+            <svg class="hidden md:block absolute -right-10 -bottom-10 w-56 h-56 text-saraena-magenta/20 pointer-events-none" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <path fill="currentColor" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C87,14.6,81.4,29.2,72.9,41.8C64.4,54.4,53,65,39.7,72.3C26.4,79.6,13.2,83.6,-0.6,84.6C-14.4,85.7,-28.8,83.8,-41.7,76.9C-54.6,70,-66,58.1,-74.3,44.4C-82.6,30.7,-87.8,15.3,-87.5,0.2C-87.2,-15,-81.4,-30,-72.2,-42.6C-63,-55.2,-50.4,-65.4,-36.6,-72.8C-22.8,-80.2,-11.4,-84.8,2.1,-88.4C15.6,-92,30.6,-83.6,44.7,-76.4Z" transform="translate(100 100)" />
+            </svg>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 items-center">
+              <div class="md:col-span-5 h-56 md:h-72 overflow-hidden relative">
+                <img id="promo-gambar" src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=800&q=80" alt="Promo Spesial SARAENA SHOP" class="w-full h-full object-cover md:rounded-r-[80px]" />
+              </div>
+
+              <div class="md:col-span-7 p-7 sm:p-10 relative z-10">
+                <span id="promo-tag" class="inline-block px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-saraena-cyan text-white mb-3">
+                  PENAWARAN TERBATAS
+                </span>
+                <h2 id="promo-judul" class="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-saraena-ink mb-2">
+                  Dapatkan Diskon Spesial &amp; Gratis Ongkir!
+                </h2>
+                <p id="promo-subjudul" class="text-sm sm:text-base text-gray-600 mb-6 max-w-xl">
+                  Gunakan kode voucher <strong class="text-saraena-magenta">SARAENA15</strong> saat pemesanan melalui WhatsApp atau klaim voucher di toko Shopee &amp; TikTok Shop kami.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-3">
+                  <a id="promo-cta-btn" href="#semua-produk" class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm text-white bg-saraena-magenta hover:bg-saraena-magentaDark shadow-md transition-all">
+                    <span id="promo-cta-text">Klaim Promo Sekarang</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                  </a>
+                  <button onclick="openMainWhatsApp('Halo SARAENA SHOP, saya ingin klaim promo spesial yang ada di website!')" class="inline-flex items-center gap-2 px-5 py-3 rounded-full font-bold text-sm text-saraena-ink bg-white border border-saraena-border hover:border-saraena-cyan transition-all cursor-pointer">
+                    <i class="fa-brands fa-whatsapp text-[#25D366] text-base"></i>
+                    <span>Tanya Promo via WA</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ========================================================================
+         TAMPILAN 2: HALAMAN ADMIN PANEL (TERPROTEKSI LOGIN)
+         ======================================================================== -->
+    <section id="admin-panel-view" class="hidden flex-1 py-8 sm:py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="bg-white rounded-3xl border border-saraena-border p-6 sm:p-8 shadow-sm mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-saraena-magenta to-saraena-cyan text-white flex items-center justify-center text-xl shadow-md">
+              <i class="fa-solid fa-sliders"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 class="font-serif font-bold text-2xl text-saraena-ink">Admin Dashboard</h1>
+                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-saraena-magentaSoft text-saraena-magenta">SARAENA SHOP</span>
+              </div>
+              <p class="text-xs sm:text-sm text-gray-500">Kelola katalog produk, link Shopee/TikTok/WhatsApp, dan banner CTA toko.</p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <button onclick="switchView('store')" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-saraena-cyanSoft text-saraena-cyanDark hover:bg-saraena-cyan hover:text-white transition-all cursor-pointer">
+              <i class="fa-solid fa-store"></i>
+              <span>Lihat Toko</span>
+            </button>
+            <button onclick="logoutAdmin()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all cursor-pointer">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <span>Keluar</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div class="bg-white rounded-2xl border border-saraena-border p-5">
+            <p class="text-xs font-semibold text-gray-500">Total Produk</p>
+            <p id="stat-total-products" class="text-2xl font-extrabold text-saraena-ink mt-1">0</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-saraena-border p-5">
+            <p class="text-xs font-semibold text-gray-500">Produk Aktif</p>
+            <p id="stat-active-products" class="text-2xl font-extrabold text-saraena-magenta mt-1">0</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-saraena-border p-5">
+            <p class="text-xs font-semibold text-gray-500">Total Kategori</p>
+            <p id="stat-total-categories" class="text-2xl font-extrabold text-saraena-cyanDark mt-1">0</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-saraena-border p-5">
+            <p class="text-xs font-semibold text-gray-500">Status Database</p>
+            <p id="stat-db-mode" class="text-sm font-extrabold text-emerald-600 mt-2">Mode Preview Lokal</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 border-b border-saraena-border pb-4 mb-6 overflow-x-auto">
+          <button id="tab-btn-products" onclick="switchAdminTab('products')" class="px-5 py-2.5 rounded-full text-sm font-bold bg-saraena-magenta text-white transition-all cursor-pointer">
+            <i class="fa-solid fa-box mr-1.5"></i> Kelola Produk
+          </button>
+          <button id="tab-btn-settings" onclick="switchAdminTab('settings')" class="px-5 py-2.5 rounded-full text-sm font-bold bg-white text-saraena-ink border border-saraena-border hover:border-saraena-cyan transition-all cursor-pointer">
+            <i class="fa-solid fa-bullhorn mr-1.5"></i> Pengaturan Toko &amp; CTA
+          </button>
+        </div>
+
+        <!-- TAB 1: KELOLA PRODUK -->
+        <div id="admin-tab-products" class="space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="relative flex-1 max-w-md">
+              <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+              <input type="text" id="admin-search-input" oninput="renderAdminProducts()" placeholder="Cari produk di admin..." class="w-full pl-10 pr-4 py-2.5 rounded-full bg-white border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+            </div>
+
+            <button onclick="openProductModal()" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-bold text-white bg-saraena-magenta hover:bg-saraena-magentaDark shadow-md transition-all cursor-pointer">
+              <i class="fa-solid fa-plus"></i>
+              <span>Tambah Produk Baru</span>
+            </button>
+          </div>
+
+          <div class="bg-white rounded-3xl border border-saraena-border overflow-hidden shadow-xs">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="bg-saraena-sand/70 border-b border-saraena-border text-xs font-extrabold uppercase tracking-wider text-gray-600">
+                    <th class="py-4 px-5">Produk</th>
+                    <th class="py-4 px-4">Kategori</th>
+                    <th class="py-4 px-4">Harga</th>
+                    <th class="py-4 px-4">Link Pembelian</th>
+                    <th class="py-4 px-4">Status</th>
+                    <th class="py-4 px-5 text-right">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-products-tbody" class="divide-y divide-saraena-border text-sm"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: PENGATURAN TOKO & CTA -->
+        <div id="admin-tab-settings" class="hidden">
+          <form id="store-settings-form" onsubmit="saveStoreSettings(event)" class="bg-white rounded-3xl border border-saraena-border p-6 sm:p-8 space-y-8 shadow-xs">
+            <div>
+              <h3 class="font-serif font-bold text-xl text-saraena-ink border-b border-saraena-border pb-3 mb-5 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-saraena-magenta"></span>
+                Identitas Toko &amp; Kontak Utama
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">Nama Toko</label>
+                  <input type="text" id="set-nama_toko" required class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">Subjudul Logo (Teks Korea / Tagline)</label>
+                  <input type="text" id="set-subjudul_logo" class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">URL Gambar Logo Custom (Opsional - default memakai SARAENA.png)</label>
+                  <input type="text" id="set-logo_url" placeholder="SARAENA.png atau https://..." class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">Nomor WhatsApp Utama (Format: 62812xxxx)</label>
+                  <input type="text" id="set-no_wa_utama" required placeholder="6281234567890" class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+                </div>
+                <div class="md:col-span-2">
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">Pesan Default Tombol WhatsApp Melayang</label>
+                  <input type="text" id="set-pesan_wa_default" required class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">Link Toko Shopee Utama (Untuk Footer)</label>
+                  <input type="url" id="set-toko_shopee" placeholder="https://shopee.co.id/nama_toko" class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">Link TikTok Shop Utama (Untuk Footer)</label>
+                  <input type="url" id="set-toko_tiktok" placeholder="https://www.tiktok.com/@nama_toko" class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-serif font-bold text-xl text-saraena-ink border-b border-saraena-border pb-3 mb-5 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-saraena-cyan"></span>
+                Tampilan Hero Section (Bagian Atas)
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">Eyebrow / Tagline Atas</label>
+                  <input type="text" id="set-hero_eyebrow" required class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-cyan" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">Teks Tombol CTA Utama</label>
+                  <input type="text" id="set-hero_cta_text" required class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-cyan" />
+                </div>
+                <div class="md:col-span-2">
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">Judul Utama Hero</label>
+                  <input type="text" id="set-hero_judul" required class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-cyan" />
+                </div>
+                <div class="md:col-span-2">
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">Deskripsi Singkat Hero</label>
+                  <textarea id="set-hero_subjudul" rows="2" required class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-cyan"></textarea>
+                </div>
+                <div class="md:col-span-2">
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">URL Gambar Utama Hero</label>
+                  <input type="url" id="set-hero_gambar" required class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-cyan" />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-serif font-bold text-xl text-saraena-ink border-b border-saraena-border pb-3 mb-5 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-saraena-magenta"></span>
+                Banner Call to Action (Promo Spesial)
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">Tag Badge Promo</label>
+                  <input type="text" id="set-promo_tag" required class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">Teks Tombol Promo</label>
+                  <input type="text" id="set-promo_cta_text" required class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+                </div>
+                <div class="md:col-span-2">
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">Judul Promo</label>
+                  <input type="text" id="set-promo_judul" required class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+                </div>
+                <div class="md:col-span-2">
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">Keterangan &amp; Kode Voucher Promo</label>
+                  <textarea id="set-promo_subjudul" rows="2" required class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta"></textarea>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">URL Gambar Banner Promo</label>
+                  <input type="url" id="set-promo_gambar" required class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">Link Tujuan Tombol Promo (Contoh: #semua-produk atau URL)</label>
+                  <input type="text" id="set-promo_link" required class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+                </div>
+                <div class="md:col-span-2">
+                  <label class="block text-xs font-bold text-gray-700 mb-1.5">Alamat / Info Singkat Footer</label>
+                  <input type="text" id="set-alamat_footer" class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-saraena-border">
+              <button type="button" id="btn-reset-demo" onclick="resetDemoData()" class="px-5 py-2.5 rounded-full text-xs font-bold text-gray-600 bg-gray-100 hover:bg-gray-200 transition-all cursor-pointer">
+                Reset Data Demo Awal
+              </button>
+              <button type="submit" id="btn-save-settings" class="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-bold text-white bg-saraena-magenta hover:bg-saraena-magentaDark shadow-md transition-all cursor-pointer">
+                <i class="fa-solid fa-floppy-disk"></i>
+                <span>Simpan Pengaturan Toko</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER MAGENTA PENUH ==================== -->
+    <footer class="bg-saraena-magenta text-white pt-12 pb-8 mt-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-white/20 items-center">
+          <div class="md:col-span-5 space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-2xl bg-white p-1.5 flex items-center justify-center shadow-sm overflow-hidden">
+                <img src="SARAENA.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');" class="w-full h-full object-contain" />
+                <svg class="hidden w-full h-full" viewBox="0 0 120 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M52 10C26 12 10 34 10 58C10 79 20 96 44 100L30 89L43 81L38 69C46 75 56 79 67 79C75 79 79 74 78 69C77 64 68 62 59 61L64 56C65 54 62 52 57 53C49 55 40 53 34 46C28 38 30 22 52 10Z" fill="#00A2E9"/>
+                  <path d="M68 100C94 98 110 76 110 52C110 31 100 14 76 10L90 21L77 29L82 41C74 35 64 31 53 31C45 31 41 36 42 41C43 46 52 48 61 49L56 54C55 56 58 58 63 57C71 55 80 57 86 64C92 72 90 88 68 100Z" fill="#E40082"/>
+                </svg>
+              </div>
+              <div>
+                <span id="footer-brand-title" class="font-extrabold text-xl tracking-tight block leading-none">SARAENA SHOP</span>
+                <span id="footer-brand-sub" class="text-xs font-semibold text-white/80 tracking-widest">사라 에나</span>
+              </div>
+            </div>
+            <p id="footer-alamat" class="text-sm text-white/85 max-w-sm leading-relaxed">
+              Belanja produk pilihan berkualitas dengan pelayanan ramah. Tersedia pemesanan via WhatsApp, Shopee, dan TikTok Shop.
+            </p>
+          </div>
+
+          <div class="md:col-span-4 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold">
+            <a href="#beranda" onclick="switchView('store')" class="hover:text-saraena-cyanSoft transition-colors">Beranda</a>
+            <a href="#kategori" onclick="switchView('store')" class="hover:text-saraena-cyanSoft transition-colors">Kategori</a>
+            <a href="#semua-produk" onclick="switchView('store')" class="hover:text-saraena-cyanSoft transition-colors">Semua Produk</a>
+            <a href="#keunggulan" onclick="switchView('store')" class="hover:text-saraena-cyanSoft transition-colors">Keunggulan</a>
+            <a href="#promo" onclick="switchView('store')" class="hover:text-saraena-cyanSoft transition-colors">Promo</a>
+          </div>
+
+          <div class="md:col-span-3 flex md:justify-end items-center gap-3">
+            <button onclick="openMainWhatsApp()" title="WhatsApp SARAENA SHOP" class="w-10 h-10 rounded-full bg-white/15 hover:bg-[#25D366] flex items-center justify-center transition-all cursor-pointer">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+            </button>
+            <a id="footer-link-shopee" href="https://shopee.co.id" target="_blank" rel="noopener noreferrer" title="Shopee SARAENA SHOP" class="w-10 h-10 rounded-full bg-white/15 hover:bg-[#EE4D2D] flex items-center justify-center transition-all">
+              <i class="fa-solid fa-bag-shopping text-base"></i>
+            </a>
+            <a id="footer-link-tiktok" href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" title="TikTok Shop SARAENA SHOP" class="w-10 h-10 rounded-full bg-white/15 hover:bg-[#111111] flex items-center justify-center transition-all">
+              <i class="fa-brands fa-tiktok text-base"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/80">
+          <p>&copy; <span id="footer-year"></span> <span id="footer-copy-name">SARAENA SHOP</span>. All rights reserved.</p>
+          <button onclick="handleAdminNavClick()" class="inline-flex items-center gap-1.5 text-white/80 hover:text-white underline underline-offset-4 cursor-pointer">
+            <i class="fa-solid fa-lock text-[10px]"></i>
+            <span>Halaman Admin</span>
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ==================== TOMBOL WHATSAPP MELAYANG ==================== -->
+    <button onclick="openMainWhatsApp()" aria-label="Chat WhatsApp SARAENA SHOP" class="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2.5 px-4 py-3.5 sm:px-5 sm:py-3.5 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold text-sm shadow-xl wa-floating-pulse transition-transform hover:scale-105 cursor-pointer">
+      <i class="fa-brands fa-whatsapp text-2xl"></i>
+      <span class="hidden sm:inline">Chat WhatsApp</span>
+    </button>
+
+    <!-- ==================== MODAL 1: LOGIN ADMIN ==================== -->
+    <div id="admin-login-modal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
+      <div class="bg-white rounded-3xl max-w-md w-full p-7 sm:p-8 shadow-2xl border border-saraena-border relative">
+        <button onclick="closeLoginModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="text-center mb-6">
+          <div class="w-14 h-14 rounded-2xl bg-saraena-magentaSoft text-saraena-magenta flex items-center justify-center mx-auto mb-3 text-2xl">
+            <i class="fa-solid fa-user-lock"></i>
+          </div>
+          <h3 class="font-serif font-bold text-2xl text-saraena-ink">Login Halaman Admin</h3>
+          <p class="text-xs text-gray-500 mt-1">Masuk untuk mengelola katalog produk &amp; pengaturan toko.</p>
+        </div>
+
+        <form onsubmit="submitAdminLogin(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1.5">Username</label>
+            <input type="text" id="login-username" required placeholder="Masukkan username admin" class="w-full px-4 py-3 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1.5">Password</label>
+            <input type="password" id="login-password" required placeholder="Masukkan password" class="w-full px-4 py-3 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+          </div>
+
+          <div id="preview-login-hint" class="p-3 rounded-xl bg-saraena-cyanSoft border border-saraena-cyan/30 text-xs text-saraena-cyanDark">
+            <strong>Mode Preview Aktif:</strong> Gunakan username <code class="font-bold">admin</code> dan password <code class="font-bold">edudigital</code>
+          </div>
+
+          <button type="submit" id="btn-submit-login" class="w-full py-3 rounded-full font-bold text-sm text-white bg-saraena-magenta hover:bg-saraena-magentaDark shadow-md transition-all cursor-pointer">
+            Masuk ke Admin Panel
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 2: TAMBAH / EDIT PRODUK ==================== -->
+    <div id="product-form-modal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+      <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-saraena-border relative my-8">
+        <button onclick="closeProductModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <h3 id="product-modal-title" class="font-serif font-bold text-2xl text-saraena-ink mb-1">Tambah Produk Baru</h3>
+        <p class="text-xs text-gray-500 mb-6">Lengkapi detail produk beserta link pembelian WhatsApp, Shopee, dan TikTok Shop.</p>
+
+        <form id="product-crud-form" onsubmit="saveProductForm(event)" class="space-y-4">
+          <input type="hidden" id="prod-id" />
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-bold text-gray-700 mb-1">Nama Produk *</label>
+              <input type="text" id="prod-nama" required placeholder="Contoh: Tas Selempang Kanvas Premium" class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1">Kategori *</label>
+              <input type="text" id="prod-kategori" list="kategori-suggestions" required placeholder="Contoh: Fashion, Aksesoris, Skincare..." class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+              <datalist id="kategori-suggestions"></datalist>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1">Harga (Rp) *</label>
+              <input type="number" id="prod-harga" required min="0" placeholder="Contoh: 125000" class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1">Badge / Label Promo (Opsional)</label>
+              <input type="text" id="prod-badge" placeholder="Contoh: Terlaris, Promo, Baru" class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-cyan" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1">Status Produk</label>
+              <select id="prod-status" class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-cyan">
+                <option value="Aktif">Aktif (Tampil di Toko)</option>
+                <option value="Draft">Draft (Sembunyikan)</option>
+              </select>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-bold text-gray-700 mb-1">URL Gambar Produk *</label>
+              <input type="text" id="prod-gambar" required oninput="updateProductImagePreview()" placeholder="https://... atau nama-file.jpg di GitHub" class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta" />
+              <div class="mt-2 flex items-center gap-3">
+                <img id="prod-gambar-preview" src="https://placehold.co/100x100/F4EFEA/231F20?text=Preview" alt="Preview" class="w-14 h-14 rounded-xl object-cover border border-saraena-border" />
+                <span class="text-[11px] text-gray-500">Gunakan URL gambar publik (.jpg/.png/.webp) atau nama file gambar yang di-upload ke repository GitHub.</span>
+              </div>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-bold text-gray-700 mb-1">Deskripsi Singkat Produk</label>
+              <textarea id="prod-deskripsi" rows="2" placeholder="Jelaskan keunggulan singkat produk..." class="w-full px-4 py-2.5 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-magenta"></textarea>
+            </div>
+
+            <div class="sm:col-span-2 pt-2 border-t border-saraena-border">
+              <p class="text-xs font-extrabold text-saraena-ink mb-3">Link Pembelian Multi-Platform</p>
+              <div class="space-y-3">
+                <div>
+                  <label class="block text-[11px] font-bold text-[#1EBE5D] mb-1">
+                    <i class="fa-brands fa-whatsapp mr-1"></i> Link WhatsApp Custom (Opsional - kosongkan agar otomatis ke WA Toko dengan pesan nama produk)
+                  </label>
+                  <input type="url" id="prod-link_wa" placeholder="https://wa.me/62812xxxx?text=..." class="w-full px-4 py-2 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-[#25D366]" />
+                </div>
+
+                <div>
+                  <label class="block text-[11px] font-bold text-[#EE4D2D] mb-1">
+                    <i class="fa-solid fa-bag-shopping mr-1"></i> Link Produk Shopee (Kosongkan jika tidak tersedia di Shopee)
+                  </label>
+                  <input type="url" id="prod-link_shopee" placeholder="https://shopee.co.id/produk-anda..." class="w-full px-4 py-2 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-[#EE4D2D]" />
+                </div>
+
+                <div>
+                  <label class="block text-[11px] font-bold text-saraena-ink mb-1">
+                    <i class="fa-brands fa-tiktok mr-1"></i> Link Produk TikTok Shop (Kosongkan jika tidak tersedia di TikTok Shop)
+                  </label>
+                  <input type="url" id="prod-link_tiktok" placeholder="https://vt.tiktok.com/... atau https://shop.tiktok.com/..." class="w-full px-4 py-2 rounded-xl border border-saraena-border text-sm focus:outline-none focus:border-saraena-cyan" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-end gap-3 pt-4 border-t border-saraena-border">
+            <button type="button" onclick="closeProductModal()" class="px-5 py-2.5 rounded-full text-sm font-bold text-gray-600 bg-gray-100 hover:bg-gray-200 transition-all cursor-pointer">
+              Batal
+            </button>
+            <button type="submit" id="btn-save-product" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold text-white bg-saraena-magenta hover:bg-saraena-magentaDark shadow-md transition-all cursor-pointer">
+              <i class="fa-solid fa-check"></i>
+              <span>Simpan Produk</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 3: KONFIRMASI HAPUS ==================== -->
+    <div id="confirm-delete-modal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
+      <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl border border-saraena-border">
+        <div class="w-14 h-14 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto mb-4 text-2xl">
+          <i class="fa-solid fa-trash-can"></i>
+        </div>
+        <h3 class="font-serif font-bold text-xl text-saraena-ink mb-1">Hapus Produk?</h3>
+        <p id="confirm-delete-text" class="text-xs sm:text-sm text-gray-500 mb-6">Tindakan ini akan menghapus produk dari daftar katalog secara permanen.</p>
+        <div class="flex items-center justify-center gap-3">
+          <button onclick="closeConfirmModal()" class="flex-1 py-2.5 rounded-full text-sm font-bold text-gray-600 bg-gray-100 hover:bg-gray-200 transition-all cursor-pointer">
+            Batal
+          </button>
+          <button id="btn-confirm-delete-yes" class="flex-1 py-2.5 rounded-full text-sm font-bold text-white bg-red-600 hover:bg-red-700 transition-all cursor-pointer">
+            Ya, Hapus
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TOAST NOTIFICATION ==================== -->
+    <div id="toast-container" class="fixed top-24 right-5 z-50 space-y-2 pointer-events-none"></div>
+
+  </div>
+
+  <!-- ==========================================================================
+       LOGIKA JAVASCRIPT FRONTEND & INTEGRASI GAS
+       ========================================================================== -->
+  <script>
+    // ============================================================================
+    // KONFIGURASI APLIKASI
+    // UBAH IS_PREVIEW KE false JIKA AKAN DI-DEPLOY KE GITHUB PAGES DENGAN GAS
+    // ============================================================================
+    const IS_PREVIEW = true; // Ubah menjadi false saat upload ke GitHub
+    const GAS_URL = "URL_DEPLOY_GAS_ANDA_DISINI";
+
+    const STORAGE_KEYS = {
+      PRODUCTS: 'saraena_shop_products_v1',
+      SETTINGS: 'saraena_shop_settings_v1',
+      ADMIN_SESSION: 'saraena_shop_admin_logged_in'
+    };
+
+    const DEFAULT_SETTINGS = {
+      nama_toko: 'SARAENA SHOP',
+      subjudul_logo: '사라 에나',
+      logo_url: '',
+      no_wa_utama: '6281234567890',
+      pesan_wa_default: 'Halo Admin SARAENA SHOP, saya tertarik dengan produk di website. Boleh tanya info lebih lanjut?',
+      toko_shopee: 'https://shopee.co.id',
+      toko_tiktok: 'https://www.tiktok.com',
+      hero_eyebrow: 'KOLEKSI TERKURASI DENGAN CINTA',
+      hero_judul: 'Produk Pilihan & Estetik untuk Gaya Hidup Anda',
+      hero_subjudul: 'Temukan beragam produk berkualitas tinggi di SARAENA SHOP. Pesan mudah dan cepat langsung melalui WhatsApp, Shopee, atau TikTok Shop favorit Anda.',
+      hero_gambar: 'https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=1000&q=85',
+      hero_cta_text: 'Belanja Sekarang',
+      promo_tag: 'PENAWARAN TERBATAS',
+      promo_judul: 'Dapatkan Diskon 15% untuk Pembelian Pertama!',
+      promo_subjudul: 'Gunakan kode voucher SARAENA15 saat pemesanan via WhatsApp atau klaim langsung di Shopee & TikTok Shop kami.',
+      promo_gambar: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=800&q=80',
+      promo_cta_text: 'Klaim Promo Sekarang',
+      promo_link: '#semua-produk',
+      alamat_footer: 'Belanja produk pilihan berkualitas dengan pelayanan ramah. Tersedia pemesanan via WhatsApp, Shopee, dan TikTok Shop.'
+    };
+
+    const DEFAULT_PRODUCTS = [
+      {
+        id_produk: 'PRD-001',
+        nama_produk: 'Vas Keramik Artisan Motif Floral',
+        kategori: 'Dekorasi Rumah',
+        harga: 145000,
+        deskripsi: 'Vas keramik lukis tangan dengan sentuhan warna cerah untuk mempercantik meja ruang tamu.',
+        gambar_url: 'https://images.unsplash.com/photo-1578500494198-246f612d3b3d?auto=format&fit=crop&w=700&q=80',
+        badge: 'Terlaris',
+        link_wa: '',
+        link_shopee: 'https://shopee.co.id',
+        link_tiktok: 'https://www.tiktok.com',
+        status: 'Aktif'
+      },
+      {
+        id_produk: 'PRD-002',
+        nama_produk: 'Tas Kanvas Estetik Korean Style',
+        kategori: 'Fashion & Tas',
+        harga: 119000,
+        deskripsi: 'Tas bahu bahan kanvas tebal premium dengan jahitan rapi dan kompartemen luas.',
+        gambar_url: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=700&q=80',
+        badge: 'Baru',
+        link_wa: '',
+        link_shopee: 'https://shopee.co.id',
+        link_tiktok: 'https://www.tiktok.com',
+        status: 'Aktif'
+      },
+      {
+        id_produk: 'PRD-003',
+        nama_produk: 'Set Serum Glow & Hydrating Skincare',
+        kategori: 'Kecantikan',
+        harga: 165000,
+        deskripsi: 'Paket perawatan kulit wajah harian untuk kelembapan ekstra dan tampilan cerah alami.',
+        gambar_url: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=700&q=80',
+        badge: 'Promo',
+        link_wa: '',
+        link_shopee: 'https://shopee.co.id',
+        link_tiktok: 'https://www.tiktok.com',
+        status: 'Aktif'
+      },
+      {
+        id_produk: 'PRD-004',
+        nama_produk: 'Aromatherapy Scented Candle Rose & Vanilla',
+        kategori: 'Aromaterapi',
+        harga: 85000,
+        deskripsi: 'Lilin aromaterapi soy wax alami dengan wangi menenangkan hingga 35 jam pembakaran.',
+        gambar_url: 'https://images.unsplash.com/photo-1602874801007-bd458bb1b8b6?auto=format&fit=crop&w=700&q=80',
+        badge: '',
+        link_wa: '',
+        link_shopee: 'https://shopee.co.id',
+        link_tiktok: 'https://www.tiktok.com',
+        status: 'Aktif'
+      },
+      {
+        id_produk: 'PRD-005',
+        nama_produk: 'Anting Handmade Bohemian Drop',
+        kategori: 'Aksesoris',
+        harga: 65000,
+        deskripsi: 'Aksesoris anting ringan buatan tangan dengan kombinasi warna elegan untuk acara spesial.',
+        gambar_url: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=700&q=80',
+        badge: 'Terlaris',
+        link_wa: '',
+        link_shopee: 'https://shopee.co.id',
+        link_tiktok: 'https://www.tiktok.com',
+        status: 'Aktif'
+      },
+      {
+        id_produk: 'PRD-006',
+        nama_produk: 'Bantal Sofa Tenun Motif Geometris',
+        kategori: 'Tekstil',
+        harga: 98000,
+        deskripsi: 'Sarung bantal sofa berbahan katun tenun lembut dengan ritsleting tersembunyi.',
+        gambar_url: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=700&q=80',
+        badge: '',
+        link_wa: '',
+        link_shopee: 'https://shopee.co.id',
+        link_tiktok: 'https://www.tiktok.com',
+        status: 'Aktif'
+      },
+      {
+        id_produk: 'PRD-007',
+        nama_produk: 'Tumbler Stainless Pastel 500ml',
+        kategori: 'Perlengkapan',
+        harga: 110000,
+        deskripsi: 'Botol minum vakum tahan panas dan dingin hingga 12 jam, anti bocor dan ringan dibawa.',
+        gambar_url: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=700&q=80',
+        badge: 'Promo',
+        link_wa: '',
+        link_shopee: 'https://shopee.co.id',
+        link_tiktok: 'https://www.tiktok.com',
+        status: 'Aktif'
+      },
+      {
+        id_produk: 'PRD-008',
+        nama_produk: 'Hiasan Dinding Macrame Bohemian',
+        kategori: 'Dekorasi Rumah',
+        harga: 135000,
+        deskripsi: 'Anyaman tali katun alami buatan tangan untuk memperindah kamar tidur atau ruang kerja.',
+        gambar_url: 'https://images.unsplash.com/photo-1522758971460-1d21eed7dc1d?auto=format&fit=crop&w=700&q=80',
+        badge: '',
+        link_wa: '',
+        link_shopee: 'https://shopee.co.id',
+        link_tiktok: 'https://www.tiktok.com',
+        status: 'Aktif'
+      }
+    ];
+
+    let appState = {
+      products: [],
+      settings: { ...DEFAULT_SETTINGS },
+      selectedCategory: 'Semua',
+      isAdminLoggedIn: false,
+      currentView: 'store'
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+      if (IS_PREVIEW) {
+        document.getElementById('preview-mode-badge').classList.remove('hidden');
+        document.getElementById('preview-login-hint').classList.remove('hidden');
+        document.getElementById('stat-db-mode').textContent = 'Mode Preview Lokal';
+        document.getElementById('btn-reset-demo').classList.remove('hidden');
+      } else {
+        document.getElementById('preview-mode-badge').classList.add('hidden');
+        document.getElementById('preview-login-hint').classList.add('hidden');
+        document.getElementById('stat-db-mode').textContent = 'Google Sheets Live';
+        document.getElementById('btn-reset-demo').classList.add('hidden');
+      }
+
+      appState.isAdminLoggedIn = sessionStorage.getItem(STORAGE_KEYS.ADMIN_SESSION) === 'true';
+      updateAdminNavState();
+      loadInitialData();
+    });
+
+    async function loadInitialData() {
+      if (IS_PREVIEW) {
+        try {
+          const savedProducts = localStorage.getItem(STORAGE_KEYS.PRODUCTS);
+          const savedSettings = localStorage.getItem(STORAGE_KEYS.SETTINGS);
+
+          appState.products = savedProducts ? JSON.parse(savedProducts) : [...DEFAULT_PRODUCTS];
+          appState.settings = savedSettings ? { ...DEFAULT_SETTINGS, ...JSON.parse(savedSettings) } : { ...DEFAULT_SETTINGS };
+
+          if (!savedProducts) localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(appState.products));
+          if (!savedSettings) localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(appState.settings));
+        } catch (err) {
+          appState.products = [...DEFAULT_PRODUCTS];
+          appState.settings = { ...DEFAULT_SETTINGS };
+        }
+        applySettingsToUI();
+        renderCategories();
+        renderProducts();
+        renderAdminProducts();
+      } else {
+        try {
+          const response = await fetch(GAS_URL);
+          const result = await response.json();
+          if (result.status === 'success') {
+            appState.products = Array.isArray(result.products) ? result.products : [];
+            appState.settings = result.settings ? { ...DEFAULT_SETTINGS, ...result.settings } : { ...DEFAULT_SETTINGS };
+            applySettingsToUI();
+            renderCategories();
+            renderProducts();
+            renderAdminProducts();
+          } else {
+            showToast('Gagal memuat data dari server.', 'error');
+          }
+        } catch (error) {
+          console.error('Error fetching GAS data:', error);
+          showToast('Koneksi ke Google Sheets bermasalah, menampilkan data cadangan.', 'error');
+          appState.products = [...DEFAULT_PRODUCTS];
+          applySettingsToUI();
+          renderCategories();
+          renderProducts();
+        }
+      }
+    }
+
+    function applySettingsToUI() {
+      const s = appState.settings;
+      const titleEl = document.getElementById('nav-brand-title');
+      const subEl = document.getElementById('nav-brand-sub');
+      if (titleEl) titleEl.textContent = s.nama_toko || 'SARAENA SHOP';
+      if (subEl) subEl.textContent = s.subjudul_logo || '사라 에나';
+
+      document.getElementById('footer-brand-title').textContent = s.nama_toko || 'SARAENA SHOP';
+      document.getElementById('footer-brand-sub').textContent = s.subjudul_logo || '사라 에나';
+      document.getElementById('footer-copy-name').textContent = s.nama_toko || 'SARAENA SHOP';
+
+      const navLogoContainer = document.getElementById('nav-logo-container');
+      if (s.logo_url && s.logo_url.trim() !== '') {
+        navLogoContainer.innerHTML = `
+          <img src="${escapeHtml(s.logo_url)}" alt="${escapeHtml(s.nama_toko)}" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+        `;
+      }
+
+      document.getElementById('hero-eyebrow').textContent = s.hero_eyebrow;
+      document.getElementById('hero-judul').textContent = s.hero_judul;
+      document.getElementById('hero-subjudul').textContent = s.hero_subjudul;
+      document.getElementById('hero-cta-text').textContent = s.hero_cta_text;
+      document.getElementById('hero-gambar').src = s.hero_gambar;
+
+      document.getElementById('promo-tag').textContent = s.promo_tag;
+      document.getElementById('promo-judul').textContent = s.promo_judul;
+      document.getElementById('promo-subjudul').textContent = s.promo_subjudul;
+      document.getElementById('promo-gambar').src = s.promo_gambar;
+      document.getElementById('promo-cta-text').textContent = s.promo_cta_text;
+      document.getElementById('promo-cta-btn').href = s.promo_link || '#semua-produk';
+
+      document.getElementById('footer-alamat').textContent = s.alamat_footer;
+      document.getElementById('footer-link-shopee').href = s.toko_shopee || 'https://shopee.co.id';
+      document.getElementById('footer-link-tiktok').href = s.toko_tiktok || 'https://www.tiktok.com';
+
+      const settingFields = [
+        'nama_toko', 'subjudul_logo', 'logo_url', 'no_wa_utama', 'pesan_wa_default',
+        'toko_shopee', 'toko_tiktok', 'hero_eyebrow', 'hero_judul', 'hero_subjudul',
+        'hero_gambar', 'hero_cta_text', 'promo_tag', 'promo_judul', 'promo_subjudul',
+        'promo_gambar', 'promo_cta_text', 'promo_link', 'alamat_footer'
+      ];
+      settingFields.forEach(key => {
+        const el = document.getElementById(`set-${key}`);
+        if (el) el.value = s[key] || '';
+      });
+    }
+
+    function renderCategories() {
+      const activeProducts = appState.products.filter(p => p.status === 'Aktif');
+      const categoryMap = new Map();
+
+      activeProducts.forEach(prod => {
+        const cat = (prod.kategori || 'Umum').trim();
+        if (!categoryMap.has(cat)) {
+          categoryMap.set(cat, prod.gambar_url);
+        }
+      });
+
+      const categories = Array.from(categoryMap.entries());
+      const categoryGrid = document.getElementById('category-grid');
+      const filterPills = document.getElementById('category-filter-pills');
+      const datalist = document.getElementById('kategori-suggestions');
+
+      datalist.innerHTML = categories.map(([cat]) => `<option value="${escapeHtml(cat)}">`).join('');
+
+      if (categories.length === 0) {
+        categoryGrid.innerHTML = `<p class="col-span-full text-sm text-gray-500">Belum ada kategori tersedia.</p>`;
+      } else {
+        categoryGrid.innerHTML = categories.slice(0, 6).map(([cat, imgUrl], index) => {
+          const isSelected = appState.selectedCategory === cat;
+          const blobColor = index % 2 === 0 ? 'bg-saraena-magenta' : 'bg-saraena-cyan';
+          return `
+            <button onclick="filterByCategory('${escapeJs(cat)}')" class="group flex flex-col items-center text-center focus:outline-none cursor-pointer">
+              <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-[34px_24px_38px_22px] ${isSelected ? 'bg-saraena-magentaSoft ring-2 ring-saraena-magenta' : 'bg-saraena-sand group-hover:bg-saraena-cyanSoft'} flex items-center justify-center p-3 transition-all duration-300 shadow-xs">
+                <img src="${escapeHtml(imgUrl)}" alt="${escapeHtml(cat)}" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover shadow-xs group-hover:scale-105 transition-transform duration-300" />
+                <span class="absolute -bottom-1 -right-1 w-6 h-6 rounded-[12px_6px_14px_8px] ${blobColor} opacity-90 shadow-xs"></span>
+              </div>
+              <span class="mt-3 text-xs sm:text-sm font-bold ${isSelected ? 'text-saraena-magenta' : 'text-saraena-ink group-hover:text-saraena-magenta'} transition-colors">
+                ${escapeHtml(cat)}
+              </span>
+            </button>
+          `;
+        }).join('');
+      }
+
+      const allCats = ['Semua', ...categories.map(([cat]) => cat)];
+      filterPills.innerHTML = allCats.map(cat => {
+        const active = appState.selectedCategory === cat;
+        return `
+          <button onclick="filterByCategory('${escapeJs(cat)}')" class="px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
+            active
+              ? 'bg-saraena-magenta text-white shadow-sm'
+              : 'bg-white text-saraena-ink border border-saraena-border hover:border-saraena-cyan hover:text-saraena-cyanDark'
+          }">
+            ${escapeHtml(cat)}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function filterByCategory(category) {
+      appState.selectedCategory = category;
+      renderCategories();
+      renderProducts();
+      const productSection = document.getElementById('semua-produk');
+      if (productSection) {
+        productSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function renderProducts() {
+      const searchQuery = (document.getElementById('product-search-input').value || '').toLowerCase().trim();
+      const sortBy = document.getElementById('product-sort-select').value;
+
+      let filtered = appState.products.filter(prod => {
+        if (prod.status !== 'Aktif') return false;
+        const matchCat = appState.selectedCategory === 'Semua' || (prod.kategori || '').trim() === appState.selectedCategory;
+        const matchSearch =
+          (prod.nama_produk || '').toLowerCase().includes(searchQuery) ||
+          (prod.deskripsi || '').toLowerCase().includes(searchQuery) ||
+          (prod.kategori || '').toLowerCase().includes(searchQuery);
+        return matchCat && matchSearch;
+      });
+
+      if (sortBy === 'price-asc') {
+        filtered.sort((a, b) => Number(a.harga) - Number(b.harga));
+      } else if (sortBy === 'price-desc') {
+        filtered.sort((a, b) => Number(b.harga) - Number(a.harga));
+      } else if (sortBy === 'name-asc') {
+        filtered.sort((a, b) => (a.nama_produk || '').localeCompare(b.nama_produk || ''));
+      }
+
+      const grid = document.getElementById('products-grid');
+      const emptyState = document.getElementById('empty-products-state');
+      document.getElementById('product-count-label').textContent = `Menampilkan ${filtered.length} produk`;
+      document.getElementById('active-category-badge').textContent = `Kategori: ${appState.selectedCategory}`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(prod => {
+        const formattedPrice = formatRupiah(prod.harga);
+        const waUrl = buildProductWhatsAppUrl(prod);
+        const hasShopee = prod.link_shopee && prod.link_shopee.trim() !== '';
+        const hasTiktok = prod.link_tiktok && prod.link_tiktok.trim() !== '';
+
+        return `
+          <article class="group bg-white rounded-2xl border border-saraena-border overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-square bg-saraena-sand overflow-hidden">
+                <img src="${escapeHtml(prod.gambar_url)}" alt="${escapeHtml(prod.nama_produk)}" loading="lazy" onerror="this.src='https://placehold.co/500x500/F4EFEA/231F20?text=SARAENA+SHOP'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                ${prod.badge ? `
+                  <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-extrabold bg-saraena-magenta text-white shadow-sm">
+                    ${escapeHtml(prod.badge)}
+                  </span>
+                ` : ''}
+                <span class="absolute bottom-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/90 backdrop-blur-xs text-saraena-ink shadow-xs">
+                  ${escapeHtml(prod.kategori || 'Umum')}
+                </span>
+              </div>
+
+              <div class="p-4 sm:p-5 pb-3">
+                <h3 class="font-bold text-base text-saraena-ink line-clamp-2 group-hover:text-saraena-magenta transition-colors leading-snug">
+                  ${escapeHtml(prod.nama_produk)}
+                </h3>
+                ${prod.deskripsi ? `
+                  <p class="text-xs text-gray-500 line-clamp-2 mt-1.5 leading-relaxed">
+                    ${escapeHtml(prod.deskripsi)}
+                  </p>
+                ` : ''}
+                <p class="text-lg font-extrabold text-saraena-magenta mt-3">
+                  ${formattedPrice}
+                </p>
+              </div>
+            </div>
+
+            <div class="px-4 sm:px-5 pb-5 pt-2 border-t border-saraena-border/60 space-y-2">
+              <p class="text-[10px] font-bold uppercase tracking-wider text-gray-400">Pesan Langsung Via:</p>
+              <a href="${escapeHtml(waUrl)}" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-3 rounded-xl bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-xs transition-all">
+                <i class="fa-brands fa-whatsapp text-base"></i>
+                <span>Beli via WhatsApp</span>
+              </a>
+
+              <div class="grid ${hasShopee && hasTiktok ? 'grid-cols-2' : 'grid-cols-1'} gap-2">
+                ${hasShopee ? `
+                  <a href="${escapeHtml(prod.link_shopee)}" target="_blank" rel="noopener noreferrer" class="py-2 px-2.5 rounded-xl bg-[#EE4D2D] hover:bg-[#D73D1E] text-white font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Shopee</span>
+                  </a>
+                ` : ''}
+
+                ${hasTiktok ? `
+                  <a href="${escapeHtml(prod.link_tiktok)}" target="_blank" rel="noopener noreferrer" class="py-2 px-2.5 rounded-xl bg-[#111111] hover:bg-gray-800 text-white font-bold text-[11px] flex items-center justify-center gap-1.5 border border-saraena-cyan/40 transition-all">
+                    <i class="fa-brands fa-tiktok text-saraena-cyan"></i>
+                    <span>TikTok Shop</span>
+                  </a>
+                ` : ''}
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function resetFilters() {
+      document.getElementById('product-search-input').value = '';
+      document.getElementById('product-sort-select').value = 'default';
+      appState.selectedCategory = 'Semua';
+      renderCategories();
+      renderProducts();
+    }
+
+    function focusSearchInput() {
+      switchView('store');
+      setTimeout(() => {
+        const input = document.getElementById('product-search-input');
+        if (input) input.focus();
+      }, 300);
+    }
+
+    function buildProductWhatsAppUrl(product) {
+      if (product.link_wa && product.link_wa.trim() !== '') {
+        return product.link_wa.trim();
+      }
+      const cleanPhone = (appState.settings.no_wa_utama || '6281234567890').replace(/[^0-9]/g, '');
+      const message = `Halo ${appState.settings.nama_toko || 'SARAENA SHOP'}, saya ingin memesan produk berikut:\n\n• *Produk:* ${product.nama_produk}\n• *Kategori:* ${product.kategori}\n• *Harga:* ${formatRupiah(product.harga)}\n\nApakah stoknya masih tersedia?`;
+      return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+    }
+
+    function openMainWhatsApp(customMessage) {
+      const cleanPhone = (appState.settings.no_wa_utama || '6281234567890').replace(/[^0-9]/g, '');
+      const text = customMessage || appState.settings.pesan_wa_default || 'Halo SARAENA SHOP, saya ingin bertanya tentang produk Anda.';
+      window.open(`https://wa.me/${cleanPhone}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    }
+
+    function handleAdminNavClick() {
+      if (appState.isAdminLoggedIn) {
+        switchView(appState.currentView === 'admin' ? 'store' : 'admin');
+      } else {
+        document.getElementById('admin-login-modal').classList.remove('hidden');
+        document.getElementById('login-username').focus();
+      }
+    }
+
+    function closeLoginModal() {
+      document.getElementById('admin-login-modal').classList.add('hidden');
+    }
+
+    async function submitAdminLogin(event) {
+      event.preventDefault();
+      const username = document.getElementById('login-username').value.trim();
+      const password = document.getElementById('login-password').value.trim();
+      const btn = document.getElementById('btn-submit-login');
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1.5"></i> Memverifikasi...';
+
+      if (IS_PREVIEW) {
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.textContent = 'Masuk ke Admin Panel';
+          if (username === 'admin' && (password === 'edudigital' || password === 'admin2026')) {
+            appState.isAdminLoggedIn = true;
+            sessionStorage.setItem(STORAGE_KEYS.ADMIN_SESSION, 'true');
+            closeLoginModal();
+            updateAdminNavState();
+            switchView('admin');
+            showToast('Berhasil masuk ke Halaman Admin!', 'success');
+          } else {
+            showToast('Username atau Password salah! (Gunakan: admin / edudigital)', 'error');
+          }
+        }, 400);
+      } else {
+        try {
+          const res = await fetch(GAS_URL, {
+            method: 'POST',
+            body: JSON.stringify({ action: 'login', username, password })
+          });
+          const data = await res.json();
+          btn.disabled = false;
+          btn.textContent = 'Masuk ke Admin Panel';
+
+          if (data.status === 'success') {
+            appState.isAdminLoggedIn = true;
+            sessionStorage.setItem(STORAGE_KEYS.ADMIN_SESSION, 'true');
+            closeLoginModal();
+            updateAdminNavState();
+            switchView('admin');
+            showToast('Login Admin berhasil!', 'success');
+          } else {
+            showToast(data.message || 'Username atau password salah!', 'error');
+          }
+        } catch (error) {
+          btn.disabled = false;
+          btn.textContent = 'Masuk ke Admin Panel';
+          showToast('Gagal terhubung ke server GAS.', 'error');
+        }
+      }
+    }
+
+    function logoutAdmin() {
+      appState.isAdminLoggedIn = false;
+      sessionStorage.removeItem(STORAGE_KEYS.ADMIN_SESSION);
+      updateAdminNavState();
+      switchView('store');
+      showToast('Anda telah keluar dari Halaman Admin.', 'info');
+    }
+
+    function updateAdminNavState() {
+      const label = document.getElementById('btn-admin-nav-text');
+      if (appState.isAdminLoggedIn) {
+        label.textContent = appState.currentView === 'admin' ? 'Kembali ke Toko' : 'Dashboard Admin';
+      } else {
+        label.textContent = 'Admin';
+      }
+    }
+
+    function switchView(viewName) {
+      appState.currentView = viewName;
+      const storeView = document.getElementById('storefront-view');
+      const adminView = document.getElementById('admin-panel-view');
+      const desktopLinks = document.getElementById('desktop-nav-links');
+
+      if (viewName === 'admin' && appState.isAdminLoggedIn) {
+        storeView.classList.add('hidden');
+        adminView.classList.remove('hidden');
+        desktopLinks.classList.add('md:hidden');
+        renderAdminProducts();
+      } else {
+        appState.currentView = 'store';
+        adminView.classList.add('hidden');
+        storeView.classList.remove('hidden');
+        desktopLinks.classList.remove('md:hidden');
+        renderCategories();
+        renderProducts();
+      }
+      updateAdminNavState();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function switchAdminTab(tab) {
+      const prodTab = document.getElementById('admin-tab-products');
+      const setTab = document.getElementById('admin-tab-settings');
+      const btnProd = document.getElementById('tab-btn-products');
+      const btnSet = document.getElementById('tab-btn-settings');
+
+      if (tab === 'products') {
+        prodTab.classList.remove('hidden');
+        setTab.classList.add('hidden');
+        btnProd.className = 'px-5 py-2.5 rounded-full text-sm font-bold bg-saraena-magenta text-white transition-all cursor-pointer';
+        btnSet.className = 'px-5 py-2.5 rounded-full text-sm font-bold bg-white text-saraena-ink border border-saraena-border hover:border-saraena-cyan transition-all cursor-pointer';
+      } else {
+        prodTab.classList.add('hidden');
+        setTab.classList.remove('hidden');
+        btnSet.className = 'px-5 py-2.5 rounded-full text-sm font-bold bg-saraena-cyan text-white transition-all cursor-pointer';
+        btnProd.className = 'px-5 py-2.5 rounded-full text-sm font-bold bg-white text-saraena-ink border border-saraena-border hover:border-saraena-magenta transition-all cursor-pointer';
+      }
+    }
+
+    function renderAdminProducts() {
+      const query = (document.getElementById('admin-search-input')?.value || '').toLowerCase().trim();
+      const filtered = appState.products.filter(p =>
+        (p.nama_produk || '').toLowerCase().includes(query) ||
+        (p.kategori || '').toLowerCase().includes(query)
+      );
+
+      document.getElementById('stat-total-products').textContent = appState.products.length;
+      document.getElementById('stat-active-products').textContent = appState.products.filter(p => p.status === 'Aktif').length;
+      const uniqueCats = new Set(appState.products.map(p => (p.kategori || '').trim()).filter(Boolean));
+      document.getElementById('stat-total-categories').textContent = uniqueCats.size;
+
+      const tbody = document.getElementById('admin-products-tbody');
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="py-10 text-center text-gray-500 text-sm">Belum ada data produk yang sesuai.</td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(prod => `
+        <tr class="hover:bg-saraena-cream/60 transition-colors">
+          <td class="py-3.5 px-5">
+            <div class="flex items-center gap-3">
+              <img src="${escapeHtml(prod.gambar_url)}" alt="${escapeHtml(prod.nama_produk)}" onerror="this.src='https://placehold.co/100x100/F4EFEA/231F20?text=Img'" class="w-12 h-12 rounded-xl object-cover border border-saraena-border shrink-0" />
+              <div>
+                <p class="font-bold text-saraena-ink line-clamp-1">${escapeHtml(prod.nama_produk)}</p>
+                <span class="text-[11px] text-gray-400">${escapeHtml(prod.id_produk)}</span>
+              </div>
+            </div>
+          </td>
+          <td class="py-3.5 px-4">
+            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-saraena-sand text-saraena-ink">${escapeHtml(prod.kategori)}</span>
+          </td>
+          <td class="py-3.5 px-4 font-bold text-saraena-magenta whitespace-nowrap">
+            ${formatRupiah(prod.harga)}
+          </td>
+          <td class="py-3.5 px-4">
+            <div class="flex items-center gap-1.5">
+              <span class="w-6 h-6 rounded-full bg-[#25D366]/15 text-[#1EBE5D] flex items-center justify-center text-xs" title="WhatsApp Aktif"><i class="fa-brands fa-whatsapp"></i></span>
+              ${prod.link_shopee ? `<a href="${escapeHtml(prod.link_shopee)}" target="_blank" class="w-6 h-6 rounded-full bg-[#EE4D2D]/15 text-[#EE4D2D] flex items-center justify-center text-xs" title="Shopee Aktif"><i class="fa-solid fa-bag-shopping"></i></a>` : ''}
+              ${prod.link_tiktok ? `<a href="${escapeHtml(prod.link_tiktok)}" target="_blank" class="w-6 h-6 rounded-full bg-gray-900/10 text-gray-900 flex items-center justify-center text-xs" title="TikTok Shop Aktif"><i class="fa-brands fa-tiktok"></i></a>` : ''}
+            </div>
+          </td>
+          <td class="py-3.5 px-4">
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold ${prod.status === 'Aktif' ? 'bg-emerald-100 text-emerald-700' : 'bg-gray-200 text-gray-600'}">
+              ${escapeHtml(prod.status)}
+            </span>
+          </td>
+          <td class="py-3.5 px-5 text-right whitespace-nowrap">
+            <button onclick="openProductModal('${escapeJs(prod.id_produk)}')" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold bg-saraena-cyanSoft text-saraena-cyanDark hover:bg-saraena-cyan hover:text-white transition-all mr-1.5 cursor-pointer">
+              <i class="fa-solid fa-pen-to-square"></i> Edit
+            </button>
+            <button onclick="confirmDeleteProduct('${escapeJs(prod.id_produk)}')" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all cursor-pointer">
+              <i class="fa-solid fa-trash"></i> Hapus
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function openProductModal(productId = null) {
+      const modal = document.getElementById('product-form-modal');
+      const title = document.getElementById('product-modal-title');
+      document.getElementById('product-crud-form').reset();
+
+      if (productId) {
+        const prod = appState.products.find(p => p.id_produk === productId);
+        if (!prod) return;
+        title.textContent = 'Edit Produk';
+        document.getElementById('prod-id').value = prod.id_produk;
+        document.getElementById('prod-nama').value = prod.nama_produk || '';
+        document.getElementById('prod-kategori').value = prod.kategori || '';
+        document.getElementById('prod-harga').value = prod.harga || 0;
+        document.getElementById('prod-badge').value = prod.badge || '';
+        document.getElementById('prod-status').value = prod.status || 'Aktif';
+        document.getElementById('prod-gambar').value = prod.gambar_url || '';
+        document.getElementById('prod-deskripsi').value = prod.deskripsi || '';
+        document.getElementById('prod-link_wa').value = prod.link_wa || '';
+        document.getElementById('prod-link_shopee').value = prod.link_shopee || '';
+        document.getElementById('prod-link_tiktok').value = prod.link_tiktok || '';
+        document.getElementById('prod-gambar-preview').src = prod.gambar_url || 'https://placehold.co/100x100/F4EFEA/231F20?text=Preview';
+      } else {
+        title.textContent = 'Tambah Produk Baru';
+        document.getElementById('prod-id').value = '';
+        document.getElementById('prod-status').value = 'Aktif';
+        document.getElementById('prod-gambar-preview').src = 'https://placehold.co/100x100/F4EFEA/231F20?text=Preview';
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeProductModal() {
+      document.getElementById('product-form-modal').classList.add('hidden');
+    }
+
+    function updateProductImagePreview() {
+      const url = document.getElementById('prod-gambar').value.trim();
+      document.getElementById('prod-gambar-preview').src = url || 'https://placehold.co/100x100/F4EFEA/231F20?text=Preview';
+    }
+
+    async function saveProductForm(event) {
+      event.preventDefault();
+      const btn = document.getElementById('btn-save-product');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1.5"></i> Menyimpan...';
+
+      const existingId = document.getElementById('prod-id').value.trim();
+      const productData = {
+        id_produk: existingId || 'PRD-' + Date.now().toString().slice(-6),
+        nama_produk: document.getElementById('prod-nama').value.trim(),
+        kategori: document.getElementById('prod-kategori').value.trim(),
+        harga: Number(document.getElementById('prod-harga').value) || 0,
+        badge: document.getElementById('prod-badge').value.trim(),
+        status: document.getElementById('prod-status').value,
+        gambar_url: document.getElementById('prod-gambar').value.trim(),
+        deskripsi: document.getElementById('prod-deskripsi').value.trim(),
+        link_wa: document.getElementById('prod-link_wa').value.trim(),
+        link_shopee: document.getElementById('prod-link_shopee').value.trim(),
+        link_tiktok: document.getElementById('prod-link_tiktok').value.trim()
+      };
+
+      if (IS_PREVIEW) {
+        if (existingId) {
+          const idx = appState.products.findIndex(p => p.id_produk === existingId);
+          if (idx !== -1) appState.products[idx] = productData;
+        } else {
+          appState.products.unshift(productData);
+        }
+        localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(appState.products));
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Simpan Produk</span>';
+        closeProductModal();
+        renderAdminProducts();
+        renderCategories();
+        renderProducts();
+        showToast(existingId ? 'Produk berhasil diperbarui!' : 'Produk baru berhasil ditambahkan!', 'success');
+      } else {
+        try {
+          const res = await fetch(GAS_URL, {
+            method: 'POST',
+            body: JSON.stringify({ action: 'saveProduct', product: productData })
+          });
+          const result = await res.json();
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Simpan Produk</span>';
+
+          if (result.status === 'success') {
+            closeProductModal();
+            await loadInitialData();
+            showToast('Produk tersimpan ke Google Sheets!', 'success');
+          } else {
+            showToast(result.message || 'Gagal menyimpan produk.', 'error');
+          }
+        } catch (err) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Simpan Produk</span>';
+          showToast('Terjadi kesalahan jaringan saat menyimpan.', 'error');
+        }
+      }
+    }
+
+    function confirmDeleteProduct(productId) {
+      const prod = appState.products.find(p => p.id_produk === productId);
+      if (!prod) return;
+
+      document.getElementById('confirm-delete-text').textContent = `Apakah Anda yakin ingin menghapus "${prod.nama_produk}" dari katalog?`;
+      const yesBtn = document.getElementById('btn-confirm-delete-yes');
+      yesBtn.onclick = () => executeDeleteProduct(productId);
+      document.getElementById('confirm-delete-modal').classList.remove('hidden');
+    }
+
+    function closeConfirmModal() {
+      document.getElementById('confirm-delete-modal').classList.add('hidden');
+    }
+
+    async function executeDeleteProduct(productId) {
+      closeConfirmModal();
+      if (IS_PREVIEW) {
+        appState.products = appState.products.filter(p => p.id_produk !== productId);
+        localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(appState.products));
+        renderAdminProducts();
+        renderCategories();
+        renderProducts();
+        showToast('Produk berhasil dihapus.', 'info');
+      } else {
+        try {
+          const res = await fetch(GAS_URL, {
+            method: 'POST',
+            body: JSON.stringify({ action: 'deleteProduct', id_produk: productId })
+          });
+          const result = await res.json();
+          if (result.status === 'success') {
+            await loadInitialData();
+            showToast('Produk berhasil dihapus dari Google Sheets.', 'info');
+          } else {
+            showToast(result.message || 'Gagal menghapus produk.', 'error');
+          }
+        } catch (err) {
+          showToast('Gagal menghapus produk.', 'error');
+        }
+      }
+    }
+
+    async function saveStoreSettings(event) {
+      event.preventDefault();
+      const btn = document.getElementById('btn-save-settings');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1.5"></i> Menyimpan...';
+
+      const updatedSettings = { ...appState.settings };
+      Object.keys(DEFAULT_SETTINGS).forEach(key => {
+        const el = document.getElementById(`set-${key}`);
+        if (el) updatedSettings[key] = el.value.trim();
+      });
+
+      if (IS_PREVIEW) {
+        appState.settings = updatedSettings;
+        localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(updatedSettings));
+        applySettingsToUI();
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> <span>Simpan Pengaturan Toko</span>';
+        showToast('Pengaturan toko & CTA berhasil diperbarui!', 'success');
+      } else {
+        try {
+          const res = await fetch(GAS_URL, {
+            method: 'POST',
+            body: JSON.stringify({ action: 'saveSettings', settings: updatedSettings })
+          });
+          const result = await res.json();
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> <span>Simpan Pengaturan Toko</span>';
+
+          if (result.status === 'success') {
+            appState.settings = updatedSettings;
+            applySettingsToUI();
+            showToast('Pengaturan toko tersimpan ke Google Sheets!', 'success');
+          } else {
+            showToast(result.message || 'Gagal menyimpan pengaturan.', 'error');
+          }
+        } catch (err) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> <span>Simpan Pengaturan Toko</span>';
+          showToast('Gagal terhubung ke server GAS.', 'error');
+        }
+      }
+    }
+
+    function resetDemoData() {
+      if (!IS_PREVIEW) return;
+      localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(DEFAULT_PRODUCTS));
+      localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(DEFAULT_SETTINGS));
+      loadInitialData();
+      showToast('Data demo berhasil dikembalikan ke pengaturan awal.', 'info');
+    }
+
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-menu-drawer');
+      const icon = document.getElementById('mobile-menu-icon');
+      drawer.classList.toggle('hidden');
+      icon.className = drawer.classList.contains('hidden') ? 'fa-solid fa-bars' : 'fa-solid fa-xmark';
+    }
+
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      const colors = {
+        success: 'bg-saraena-ink text-white border-l-4 border-saraena-magenta',
+        error: 'bg-red-600 text-white border-l-4 border-white',
+        info: 'bg-saraena-cyanDark text-white border-l-4 border-white'
+      };
+
+      toast.className = `pointer-events-auto px-4 py-3 rounded-xl shadow-xl text-xs sm:text-sm font-bold flex items-center gap-2.5 transition-all duration-300 ${colors[type] || colors.success}`;
+      toast.innerHTML = `
+        <i class="fa-solid ${type === 'error' ? 'fa-circle-exclamation' : 'fa-circle-check'}"></i>
+        <span>${escapeHtml(message)}</span>
+      `;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(20px)';
+        setTimeout(() => toast.remove(), 300);
+      }, 3200);
+    }
+
+    function formatRupiah(angka) {
+      const num = Number(angka) || 0;
+      return 'Rp ' + num.toLocaleString('id-ID');
+    }
+
+    function escapeHtml(str) {
+      if (str === null || str === undefined) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function escapeJs(str) {
+      if (str === null || str === undefined) return '';
+      return String(str).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    }
+  </script>
+</body>
+</html>
